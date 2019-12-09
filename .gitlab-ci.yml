@@ -4,11 +4,12 @@ image: docker:19.03
 services:
   - docker:19.03-dind
 
-variables:
-  DOCKER_CLI_EXPERIMENTAL: enabled
-  DOCKER_BUILDKIT: 1
+build:
+  variables:
+    DOCKER_CLI_EXPERIMENTAL: enabled
+    DOCKER_BUILDKIT: 1
 
-script:
-  - docker build --platform=local -o . git://github.com/docker/buildx
-  - docker build -t lansible/docker-dind-buildx:latest .
-  - docker push lansible/docker-dind-buildx:latest
+  script:
+    - docker build --platform=local -o . git://github.com/docker/buildx
+    - docker build -t lansible/docker-dind-buildx:latest .
+    - docker push lansible/docker-dind-buildx:latest
