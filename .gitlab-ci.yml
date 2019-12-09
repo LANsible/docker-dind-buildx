@@ -1,5 +1,5 @@
 ---
-image: docker:19.03
+image: docker:19.03-git
 
 services:
   - docker:19.03-dind
@@ -10,7 +10,7 @@ build:
     DOCKER_BUILDKIT: 1
 
   script:
-    - apk add git
+    - git --version
     - docker build --platform=local -o . git://github.com/docker/buildx
     - docker build -t lansible/docker-dind-buildx:latest .
     - docker push lansible/docker-dind-buildx:latest
