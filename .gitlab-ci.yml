@@ -4,6 +4,9 @@ image: docker:19.03-git
 services:
   - docker:19.03-dind
 
+include:
+  - remote: https://raw.githubusercontent.com/LANsible/gitlab-includes/master/docker-login.yml
+
 build:
   variables:
     DOCKER_CLI_EXPERIMENTAL: enabled
