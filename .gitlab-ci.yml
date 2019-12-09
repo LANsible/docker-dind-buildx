@@ -8,10 +8,6 @@ include:
   - remote: https://raw.githubusercontent.com/LANsible/gitlab-includes/master/docker-login.yml
 
 build:
-  variables:
-    DOCKER_CLI_EXPERIMENTAL: enabled
-    DOCKER_BUILDKIT: 1
-
   script:
     - docker build -t lansible/docker-dind-buildx:latest .
     - docker push lansible/docker-dind-buildx:latest
